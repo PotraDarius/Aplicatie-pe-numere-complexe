@@ -9,11 +9,11 @@ def alegere_optiune():
         print("Datele nu sunt introduse corect")
 
 
-def citire_nr_real():
+def citire_nr_complex():
     try:
         real = int(input("Dati partea reala: "))
         imag = int(input("Dati partea imaginara: "))
-        return real, imag
+        return complex(real, imag)
     except ValueError:
         print("Datele nu au fost introduse corect!")
 
@@ -28,27 +28,25 @@ def citire_index():
 
 def test_add_la_final():
     lista = [(1+2j), (5+4j)]
-    real = 13
-    imag = 20
-    assert add_la_final(real, imag, lista) == [(1+2j), (5+4j), (13+20j)]
+    numar = (13+20j)
+    assert add_la_final(numar, lista) == [(1+2j), (5+4j), (13+20j)]
 
 
-def add_la_final(real, imag, lista):
-    lista.append(complex(real, imag))
+def add_la_final(numar, lista):
+    lista.append(numar)
     return lista
 
 
 def test_add_cu_index():
     lista = [(3+4j), (7+8j), (5+9j)]
-    real = 14
-    imag = 17
+    numar = (14+17j)
     index = 1
-    assert add_cu_index(real, imag, index, lista) == [(3+4j), (7+8j), (14+17j), (5+9j)]
+    assert add_cu_index(numar, index, lista) == [(3+4j), (7+8j), (14+17j), (5+9j)]
 
 
-def add_cu_index(real, imag, index, lista):
+def add_cu_index(numar, index, lista):
     try:
-        lista.insert(index+1, complex(real, imag))
+        lista.insert(index+1, numar)
         return lista
     except IndexError:
         print("Nu s-a gasit indexul dat")
@@ -98,7 +96,7 @@ def inlocuire_numar(inlocuit, inlocuitor, lista):
     for i in range(0, len(lista)):
         if lista[i] == inlocuit:
             lista[i] = inlocuitor
-            lista_aux.append(lista[i])
+            lista_aux.append(i)
     return lista_aux
 
 
@@ -111,7 +109,7 @@ def parte_imag(start, stop, lista):
     lista_aux = []
     try:
         for i in range(start, stop):
-            lista_aux.append(lista[i])
+            lista_aux.append(lista[i].imag)
         return lista_aux
     except IndexError:
         print("Intervalul dat nu se află în listă")
@@ -163,13 +161,13 @@ def main():
                 p = alegere_optiune()
                 if p == 1:
                     test_add_la_final()
-                    input_tuple = citire_nr_real()
-                    add_la_final(input_tuple[0], input_tuple[1], numere_complexe)
+                    input1 = citire_nr_complex()
+                    add_la_final(input1, numere_complexe)
                 elif p == 2:
                     test_add_cu_index()
                     index = citire_index()
-                    input_tuple = citire_nr_real()
-                    add_cu_index(input_tuple[0], input_tuple[1], index, numere_complexe)
+                    input2 = citire_nr_complex()
+                    add_cu_index(input2, index, numere_complexe)
                 elif p == 3:
                     break
         elif p == 2:
@@ -190,8 +188,8 @@ def main():
                     stergere_interval(start, stop, numere_complexe)
                 elif p == 3:
                     test_inlocuire_numar()
-                    inlocuit = citire_nr_real()
-                    inlocuitor = citire_nr_real()
+                    inlocuit = citire_nr_complex()
+                    inlocuitor = citire_nr_complex()
                     inlocuire_numar(inlocuit, inlocuitor, numere_complexe)
                 elif p == 4:
                     break
