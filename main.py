@@ -1,12 +1,6 @@
 numere_complexe = []
 
 
-def verificare_index(index, lista):
-    if index in range(0, len(lista)):
-        return True
-    return False
-
-
 def alegere_optiune():
     try:
         p = int(input("Alege o optiune: "))
@@ -115,10 +109,13 @@ def test_parte_imag():
 
 def parte_imag(start, stop, lista):
     lista_aux = []
-    if verificare_index(start, numere_complexe) and verificare_index(stop, numere_complexe):
+    try:
         for i in range(start, stop):
             lista_aux.append(lista[i])
-    return lista_aux
+        return lista_aux
+    except IndexError:
+        print("Intervalul dat nu se află în listă")
+        return -1
 
 
 def test_modul_mai_mic_ca10():
