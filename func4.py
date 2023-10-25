@@ -2,55 +2,55 @@ from config import *
 
 
 def test_suma_secventa():
-    lista = [(1+2j), (4+5j), (7+8j), (6+9j), (15+16j)]
+    lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)]
     start = 0
     stop = 3
-    assert suma_secventa(start, stop, lista) == (12+15j)
+    assert suma_secventa(start, stop, lista) == (12, 15)
 
 
 # calculeaza si returneaza suma numerelor dintr-o secventa data din lista
-# ex: lista = lista = [(1+2j), (4+5j), (7+8j), (6+9j), (15+16j)] , start = 0, stop = 3
-# output: (12+15j)
+# ex: lista = lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)] , start = 0, stop = 3
+# output: (12, 15)
 def suma_secventa(start, stop, lista):
     try:
-        suma = 0
+        suma = (0, 0)
         for i in range(start, stop):
-            suma += lista[i]
+            suma = suma_numere_complexe(suma, lista[i])
         return suma
     except IndexError:
         print("Secventa data nu exista in lista!")
 
 
 def test_produs_secventa():
-    lista = [(1+2j), (4+5j), (7+8j), (6+9j), (15+16j)]
+    lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)]
     start = 0
     stop = 3
-    assert produs_secventa(start, stop, lista) == (-146+43j)
+    assert produs_secventa(start, stop, lista) == (-146, 43)
 
 
 # calculeaza si returneaza produsul numerelor dintr-o secventa data din lista
-# ex: lista = lista = [(1+2j), (4+5j), (7+8j), (6+9j), (15+16j)] , start = 0, stop = 3
-# output: (-146+43j)
+# ex: lista = lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)] , start = 0, stop = 3
+# output: (-146, 43)
 def produs_secventa(start, stop, lista):
     try:
-        produs = 1
-        for i in range(start, stop):
-            produs *= lista[i]
+        produs = (lista[start])
+        for i in range(start+1, stop):
+            produs = produs_numere_complexe(produs, lista[i])
         return produs
     except IndexError:
         print("Secventa data nu exista in lista!")
 
 
 def test_afisare_descrescatoare():
-    lista = [(1+2j), (4+5j), (7+8j), (6+9j), (15+16j)]
-    assert afisare_descrescatoare(lista) == [(15+16j), (6+9j), (7+8j), (4+5j), (1+2j)]
+    lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)]
+    assert afisare_descrescatoare(lista) == [(15, 16), (6, 9), (7, 8), (4, 5), (1, 2)]
 
 
 # afiseaza o lista in mod descrescator dupa partea imaginara a numerelor, fara a modifica lista
-# ex: input: lista = [(1+2j), (4+5j), (7+8j), (6+9j), (15+16j)]:
-#     output: [(15+16j), (6+9j), (7+8j), (4+5j), (1+2j)]
+# ex: input: lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)]:
+#     output: [(15, 16), (6, 9), (7, 8), (4, 5), (1, 2)]
 def afisare_descrescatoare(lista):
-    return sorted(lista, key=lambda x: x.imag, reverse=True)
+    return sorted(lista, key=lambda x: get_parte_imaginara(x), reverse=True)
 
 
 def main():

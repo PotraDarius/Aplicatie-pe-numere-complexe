@@ -2,18 +2,18 @@ import config
 
 
 def test_parte_imag():
-    lista = [(1 + 2j), (3 + 4j), (7 + 8j)]
-    assert parte_imag(0, 2, lista) == [2.0, 4.0]
+    lista = [(1, 2), (3, 4), (7, 8)]
+    assert parte_imag(0, 2, lista) == [2, 4]
 
 
 # afiseaza partea imaginara a fiecarui numar dintr-o secventa dintr-o lista
-# ex: lista = [(1+2j), (3+4j), (7+8j)], start = 0, stop = 2
-# output: [2.0, 4.0]
+# ex: lista = [(1, 2), (3, 4), (7, 8)], start = 0, stop = 2
+# output: [2, 4]
 def parte_imag(start, stop, lista):
     lista_aux = []
     try:
         for i in range(start, stop):
-            lista_aux.append(lista[i].imag)
+            lista_aux.append(lista[i][1])
         return lista_aux
     except IndexError:
         print("Intervalul dat nu se află în listă")
@@ -21,33 +21,33 @@ def parte_imag(start, stop, lista):
 
 
 def test_modul_mai_mic_ca10():
-    lista = [(1 + 2j), (3 + 4j), (6 + 8j)]
-    assert modul_mai_mic_ca10(lista) == [(1 + 2j), (3 + 4j)]
+    lista = [(1, 2), (3, 4), (6, 8)]
+    assert modul_mai_mic_ca10(lista) == [(1, 2), (3, 4)]
 
 
 # afiseaza fiecare numar complex a carui modul e mai mic ca 10 din lista
-# ex: lista = [(1+2j), (3+4j), (6+8j)]
-# output: [(1+2j), (3+4j)]
+# ex: lista = [(1, 2), (3, 4), (6, 8)]
+# output: [(1, 2), (3, 4)]
 def modul_mai_mic_ca10(lista):
     lista_aux = []
     for item in lista:
-        if abs(item) < 10:
+        if config.modul_numar_complex(item) < 10:
             lista_aux.append(item)
     return lista_aux
 
 
 def test_modul_egal_cu10():
-    lista = [(6 + 8j), (8 + 6j), (2 + 3j), (5 + 6j)]
-    assert modul_egal_cu10(lista) == [(6 + 8j), (8 + 6j)]
+    lista = [(6, 8), (8, 6), (2, 3), (5, 6)]
+    assert modul_egal_cu10(lista) == [(6, 8), (8, 6)]
 
 
 # afiseaza fiecare numar complex a carui modul este egal cu 10 din lista
-# ex: lista = [(6+8j), (8+6j), (2+3j), (5+6j)]
-# output: [(6+8j), (8+6j)]
+# ex: lista = [(6, 8), (8, 6), (2, 3), (5, 6)]
+# output: [(6, 8), (8, 6)]
 def modul_egal_cu10(lista):
     lista_aux = []
     for item in lista:
-        if abs(item) == 10:
+        if config.modul_numar_complex(item) == 10:
             lista_aux.append(item)
     return lista_aux
 

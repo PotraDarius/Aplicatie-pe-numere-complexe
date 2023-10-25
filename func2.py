@@ -2,13 +2,13 @@ import config
 
 
 def test_stergere_numar():
-    lista = [(3+4j), (5+7j), (9+8j), (14+15j)]
+    lista = [(3, 4), (5, 7), (9, 8), (14, 15)]
     index = 2
-    assert stergere_numar(index, lista) == [(3+4j), (5+7j), (14+15j)]
+    assert stergere_numar(index, lista) == [(3, 4), (5, 7), (14, 15)]
 
 
 # sterge un numar din lista de pe o pizitie data
-# ex: lista = [(1+2j), (7+8j), (45+78j), (3+6j)], index = 2 => lista = [(1+2j), (7+8j), (3+6j)]
+# ex: lista = [(1, 2), (7, 8), (45, 78), (3, 6)], index = 2 => lista = [(1, 2), (7, 8), (3, 6)]
 def stergere_numar(index, lista):
     try:
         del lista[index]
@@ -19,15 +19,15 @@ def stergere_numar(index, lista):
 
 
 def test_stergere_interval():
-    lista = [(1+2j), (3+4j), (5+6j), (7+8j), (4+10j)]
+    lista = [(1, 2), (3, 4), (5, 6), (7, 8), (4, 10)]
     start = 1
     stop = 4
-    assert stergere_interval(start, stop, lista) == [(1+2j), (4+10j)]
+    assert stergere_interval(start, stop, lista) == [(1, 2), (4, 10)]
 
 
 # stergele elementele dintr-un interval dat din lista
-# ex: lista = [(1+2j), (3+4j), (5+6j), (7+8j), (4+10j)], start = 1, stop = 4 =>
-# => lista = [(1+2j), (4+10j)]
+# ex: lista = [(1, 2), (3, 4), (5, 6), (7, 8), (4, 10)], start = 1, stop = 4 =>
+# => lista = [(1, 2), (4, 10)]
 def stergere_interval(start, stop, lista):
     try:
         del lista[start:stop]
@@ -38,17 +38,17 @@ def stergere_interval(start, stop, lista):
 
 
 def test_inlocuire_numar():
-    lista = [(1+2j), (5+7j), (1+2j), (24+13j), (1+2j)]
-    inlocuitor = (3+4j)
-    inlocuit = (1+2j)
+    lista = [(1, 2), (5, 7), (1, 2), (24, 13), (1, 2)]
+    inlocuitor = (3, 4)
+    inlocuit = (1, 2)
     assert inlocuire_numar(inlocuit, inlocuitor, lista) == [0, 2, 4]
 
 
 # inlocuieste fiecare aparitie a unui numar cu un alt numar intr-o lista
-# ex: lista = [(1+2j), (5+7j), (1+2j), (24+13j), (1+2j)]
-#     inlocuitor = (3+4j)
-#     inlocuit = (1+2j)
-# rezultat: [(3+4j), (5+7j), (3+4j), (24+13j), (3+4j)]
+# ex: lista = [(1, 2), (5, 7), (1, 2), (24, 13), (1, 2)]
+#     inlocuitor = (3, 4)
+#     inlocuit = (1, 2)
+# rezultat: [(3, 4), (5, 7), (3, 4), (24, 13), (3, 4)]
 def inlocuire_numar(inlocuit, inlocuitor, lista):
     lista_aux = []
     for i in range(0, len(lista)):

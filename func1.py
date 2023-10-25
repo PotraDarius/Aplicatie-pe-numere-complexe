@@ -2,27 +2,27 @@ from config import *
 
 
 def test_add_la_final():
-    lista = [(1+2j), (5+4j)]
-    numar = (13+20j)
-    assert add_la_final(numar, lista) == [(1+2j), (5+4j), (13+20j)]
+    lista = [(1, 2), (5, 4)]
+    numar = (13, 20)
+    assert add_la_final(numar, lista) == [(1, 2), (5, 4), (13, 20)]
 
 
 # adauga la finalul unei liste un numar complex dat
-# ex: lista = [(1+2j), (3+4j)], numar = (5+6j) => lista = [(1+2j), (3+4j), (5+6j)]
+# ex: lista = [(1, 2), (3, 4)], numar = (5, 6) => lista = [(1, 2), (3, 4), (5, 6)]
 def add_la_final(numar, lista):
     lista.append(numar)
     return lista
 
 
 def test_add_cu_index():
-    lista = [(3+4j), (7+8j), (5+9j)]
-    numar = (14+17j)
+    lista = [(3, 4), (7, 8), (5, 9)]
+    numar = (14, 17)
     index = 1
-    assert add_cu_index(numar, index, lista) == [(3+4j), (14+17j), (7+8j), (5+9j)]
+    assert add_cu_index(numar, index, lista) == [(3, 4), (14, 17), (7, 8), (5, 9)]
 
 
 # insereaza un numar complex pe o pozitie data
-# ex: lista = [(1+2j), (3+4j), (5+6j)], numar = (7+8j), index = 1 => lista = [(1+2j), (7+8j), (3+4j), (5+6j)]
+# ex: lista = [(1, 2), (3, 4), (5, 6)], numar = (7, 8), index = 1 => lista = [(1, 2), (7, 8), (3, 4), (5, 6)]
 def add_cu_index(numar, index, lista):
     try:
         lista.insert(index, numar)

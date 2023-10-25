@@ -12,6 +12,22 @@ from func5 import *
 from func6 import *
 
 
+def teste():
+    test_add_la_final()
+    test_stergere_numar()
+    test_stergere_interval()
+    test_inlocuire_numar()
+    test_parte_imag()
+    test_modul_mai_mic_ca10()
+    test_modul_egal_cu10()
+    test_prim()
+    test_filtru_parte_reala_prim()
+    test_suma_secventa()
+    test_produs_secventa()
+    test_afisare_descrescatoare()
+    test_filtrare_modul()
+
+
 def main():
     while True:
         print("Problema 1(Lucru cu numere complexe)")
@@ -42,16 +58,5 @@ def main():
             break
 
 
-test_add_la_final()
-test_stergere_numar()
-test_stergere_interval()
-test_inlocuire_numar()
-test_parte_imag()
-test_modul_mai_mic_ca10()
-test_modul_egal_cu10()
-test_prim()
-test_filtru_parte_reala_prim()
-test_suma_secventa()
-test_produs_secventa()
-test_afisare_descrescatoare()
+teste()
 main()
