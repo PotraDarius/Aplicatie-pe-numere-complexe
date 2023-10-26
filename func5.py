@@ -1,4 +1,5 @@
 import config
+from config import *
 import math
 
 
@@ -26,20 +27,22 @@ def este_prim(numar):
 
 def test_filtru_parte_reala_prim():
     lista = [(2, 6), (8, 9), (3, 5), (9, 3), (1, 2)]
-    assert filtru_parte_reala_prim(lista) == [(8, 9), (9, 3), (1, 2)]
+    filtru_parte_reala_prim(lista)
+    assert lista == [(8, 9), (9, 3), (1, 2)]
 
 
 # functia elimina fiecare element din lista une partea reala este un numar prim
 # ex: lista = [(2, 6), (8, 9), (3, 5), (9, 3), (1, 2)]
 # rezultat: lista = [(8, 9), (9, 3), (1, 2)]
 def filtru_parte_reala_prim(lista):
+    undo_list.clear()
+    undo_list.extend(lista)
     i = 0
     while i < len(lista):
-        if este_prim(config.get_parte_reala(lista[i])) is True:
+        if este_prim(get_parte_reala(lista[i])) is True:
             del lista[i]
         else:
             i = i+1
-    return lista
 
 
 def test_filtrare_modul():
@@ -57,27 +60,31 @@ def test_filtrare_modul():
 # postconditii: -
 #               lista va fi modificata conform scopului functiei
 def filtrare_modul(optiune, numar, lista):
+    undo_list.clear()
+    undo_list.extend(lista)
     if optiune == 1:
         i = 0
         while i < len(lista):
-            if config.modul_numar_complex(lista[i]) < numar:
+            if modul_numar_complex(lista[i]) < numar:
                 del lista[i]
             else:
                 i += 1
     elif optiune == 2:
         i = 0
         while i < len(lista):
-            if config.modul_numar_complex(lista[i]) == numar:
+            if modul_numar_complex(lista[i]) == numar:
                 del lista[i]
             else:
                 i += 1
     elif optiune == 3:
         i = 0
         while i < len(lista):
-            if config.modul_numar_complex(lista[i]) > numar:
+            if modul_numar_complex(lista[i]) > numar:
                 del lista[i]
             else:
                 i += 1
+    else:
+        raise ValueError("Optiunea data nu este valabila")
 
 
 def main():
@@ -85,16 +92,16 @@ def main():
         print("1.Filtrare parte reala prim")
         print("2.Filtrare modul")
         print("3.Înapoi")
-        p = config.alegere_optiune()
+        p = alegere_optiune()
         if p == 1:
-            filtru_parte_reala_prim(config.numere_complexe)
+            filtru_parte_reala_prim(numere_complexe)
         elif p == 2:
-            nr = config.citire_valoare()
+            nr = citire_valoare()
             while True:
                 print("1.Mai mic (<)")
                 print("2.Egal (=)")
                 print("3.Mai mare (>)")
-                p = config.alegere_optiune()
-                filtrare_modul(p, nr, config.numere_complexe)
+                p = alegere_optiune()
+                filtrare_modul(p, nr, numere_complexe)
         elif p == 3:
             break

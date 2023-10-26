@@ -1,4 +1,4 @@
-import config
+from config import *
 
 
 def test_parte_imag():
@@ -31,7 +31,7 @@ def test_modul_mai_mic_ca10():
 def modul_mai_mic_ca10(lista):
     lista_aux = []
     for item in lista:
-        if config.modul_numar_complex(item) < 10:
+        if modul_numar_complex(item) < 10:
             lista_aux.append(item)
     return lista_aux
 
@@ -47,7 +47,7 @@ def test_modul_egal_cu10():
 def modul_egal_cu10(lista):
     lista_aux = []
     for item in lista:
-        if config.modul_numar_complex(item) == 10:
+        if modul_numar_complex(item) == 10:
             lista_aux.append(item)
     return lista_aux
 
@@ -58,14 +58,14 @@ def main():
         print("2.Afișare numere cu modulul mai mic decât 10")
         print("3.Afișare numere cu modulul egal cu 10")
         print("4.Înapoi")
-        p = config.alegere_optiune()
+        p = alegere_optiune()
         if p == 1:
-            start = config.citire_index()
-            stop = config.citire_index()
-            print(parte_imag(start, stop, config.numere_complexe))
+            start = citire_index()
+            stop = citire_index()
+            print(parte_imag(start, stop, numere_complexe))
         elif p == 2:
-            print(modul_mai_mic_ca10(config.numere_complexe))
+            print(modul_mai_mic_ca10(numere_complexe))
         elif p == 3:
-            print(modul_egal_cu10(config.numere_complexe))
+            print(modul_egal_cu10(numere_complexe))
         elif p == 4:
             break

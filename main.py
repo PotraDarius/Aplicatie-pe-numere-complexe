@@ -26,6 +26,7 @@ def teste():
     test_produs_secventa()
     test_afisare_descrescatoare()
     test_filtrare_modul()
+    test_undo()
 
 
 def main():

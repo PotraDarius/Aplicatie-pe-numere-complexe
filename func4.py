@@ -12,6 +12,8 @@ def test_suma_secventa():
 # ex: lista = lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)] , start = 0, stop = 3
 # output: (12, 15)
 def suma_secventa(start, stop, lista):
+    undo_list.clear()
+    undo_list.extend(lista)
     try:
         suma = (0, 0)
         for i in range(start, stop):
@@ -32,6 +34,8 @@ def test_produs_secventa():
 # ex: lista = lista = [(1, 2), (4, 5), (7, 8), (6, 9), (15, 16)] , start = 0, stop = 3
 # output: (-146, 43)
 def produs_secventa(start, stop, lista):
+    undo_list.clear()
+    undo_list.extend(lista)
     try:
         produs = (lista[start])
         for i in range(start+1, stop):

@@ -10,6 +10,8 @@ def test_add_la_final():
 # adauga la finalul unei liste un numar complex dat
 # ex: lista = [(1, 2), (3, 4)], numar = (5, 6) => lista = [(1, 2), (3, 4), (5, 6)]
 def add_la_final(numar, lista):
+    undo_list.clear()
+    undo_list.extend(lista)
     lista.append(numar)
     return lista
 
@@ -25,6 +27,8 @@ def test_add_cu_index():
 # ex: lista = [(1, 2), (3, 4), (5, 6)], numar = (7, 8), index = 1 => lista = [(1, 2), (7, 8), (3, 4), (5, 6)]
 def add_cu_index(numar, index, lista):
     try:
+        undo_list.clear()
+        undo_list.extend(lista)
         lista.insert(index, numar)
         return lista
     except IndexError:

@@ -1,4 +1,4 @@
-import config
+from config import *
 
 
 def test_stergere_numar():
@@ -11,6 +11,8 @@ def test_stergere_numar():
 # ex: lista = [(1, 2), (7, 8), (45, 78), (3, 6)], index = 2 => lista = [(1, 2), (7, 8), (3, 6)]
 def stergere_numar(index, lista):
     try:
+        undo_list.clear()
+        undo_list.extend(lista)
         del lista[index]
         return lista
     except IndexError:
@@ -30,6 +32,8 @@ def test_stergere_interval():
 # => lista = [(1, 2), (4, 10)]
 def stergere_interval(start, stop, lista):
     try:
+        undo_list.clear()
+        undo_list.extend(lista)
         del lista[start:stop]
         return lista
     except IndexError:
@@ -50,6 +54,8 @@ def test_inlocuire_numar():
 #     inlocuit = (1, 2)
 # rezultat: [(3, 4), (5, 7), (3, 4), (24, 13), (3, 4)]
 def inlocuire_numar(inlocuit, inlocuitor, lista):
+    undo_list.clear()
+    undo_list.extend(lista)
     lista_aux = []
     for i in range(0, len(lista)):
         if lista[i] == inlocuit:
@@ -64,17 +70,17 @@ def main():
         print("2.Ștergere numere pe un interval")
         print("3.Înlocuirea aparițiilor unui numar cu altul")
         print("4.Înapoi")
-        p = config.alegere_optiune()
+        p = alegere_optiune()
         if p == 1:
-            index = config.citire_index()
-            stergere_numar(index, config.numere_complexe)
+            index = citire_index()
+            stergere_numar(index, numere_complexe)
         elif p == 2:
-            start = config.citire_index()
-            stop = config.citire_index()
-            stergere_interval(start, stop, config.numere_complexe)
+            start = citire_index()
+            stop = citire_index()
+            stergere_interval(start, stop, numere_complexe)
         elif p == 3:
-            inlocuit = config.citire_nr_complex()
-            inlocuitor = config.citire_nr_complex()
-            inlocuire_numar(inlocuit, inlocuitor, config.numere_complexe)
+            inlocuit = citire_nr_complex()
+            inlocuitor = citire_nr_complex()
+            inlocuire_numar(inlocuit, inlocuitor, numere_complexe)
         elif p == 4:
             break

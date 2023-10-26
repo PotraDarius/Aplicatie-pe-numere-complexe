@@ -2,7 +2,7 @@ import math
 
 # lista globara de stocare a datelor
 numere_complexe = []
-numere_complexe_pt_undo = []
+undo_list = []
 
 
 # folosit genereal pentru citirea unui numar complex
